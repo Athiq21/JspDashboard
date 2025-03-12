@@ -155,8 +155,7 @@
         </form>
   
 
-    <script>
-        // Save form data to session storage before submitting
+    <script>//AJAX
         function goToNextStep() {
             const formData = {
                 policyNumber: document.getElementById('policyNumber').value,
@@ -168,7 +167,6 @@
             window.parent.postMessage({ type: 'navigation', step: 2 }, '*');
         }
 
-        // Load saved data if coming back from later steps
         window.addEventListener('load', function() {
             const savedData = sessionStorage.getItem('step1Data');
             if (savedData) {
