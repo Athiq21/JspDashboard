@@ -255,7 +255,7 @@
                 const formData = JSON.parse(savedData);
                 document.getElementById('documentType').value = formData.documentType;
                 document.getElementById('comments').value = formData.comments;
-                // We can't restore the actual file input, but we can show the filename
+                // Meta data store krnwa
                 if (formData.fileInfo) {
                     document.getElementById('filePreview').textContent = 
                         `Previously uploaded: ${formData.fileInfo.name}`;
@@ -263,7 +263,7 @@
             }
         });
 
-        // Preview file when selected
+        // Preview krnna
         document.getElementById('documentFile').addEventListener('change', function(e) {
             const file = e.target.files[0];
             if (file) {
