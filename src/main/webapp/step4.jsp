@@ -173,30 +173,22 @@
             <div class="review-section">
                 <h3>Policy Information <a href="step1.jsp" class="edit-link">Edit</a></h3>
                 <div id="policyDetails">
-                    <!-- Will be populated by JavaScript -->
+                    
                 </div>
             </div>
 
             <div class="review-section">
                 <h3>Cancellation Details <a href="step2.jsp" class="edit-link">Edit</a></h3>
                 <div id="cancellationDetails">
-                    <!-- Will be populated by JavaScript -->
                 </div>
             </div>
 
             <div class="review-section">
                 <h3>Uploaded Documents <a href="step3.jsp" class="edit-link">Edit</a></h3>
                 <div id="documentDetails">
-                    <!-- Will be populated by JavaScript -->
                 </div>
             </div>
 
-            <div class="confirmation-checkbox">
-                <input type="checkbox" id="confirmCheck" required>
-                <label for="confirmCheck">
-                    I confirm that all the information provided is accurate and I understand that this cancellation request cannot be reversed once submitted.
-                </label>
-            </div>
             
             <div class="navigation-buttons">
                 <button type="button" class="btn btn-back" onclick="window.location.href='step3.jsp'">Previous Step</button>
@@ -206,7 +198,6 @@
 
 
     <script>
-        // Function to create review items
         function createReviewItem(label, value) {
             return `
                 <div class="review-item">
@@ -216,7 +207,6 @@
             `;
         }
 
-        // Load and display all saved data
         window.addEventListener('load', function() {
             // Load Policy Information
             const step1Data = JSON.parse(sessionStorage.getItem('step1Data') || '{}');
@@ -247,18 +237,11 @@
             `;
         });
 
-        // Handle form submission
         document.getElementById('reviewForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            
-            // Here you would typically send all the data to your server
-            // For now, we'll just show a success message
             alert('Cancellation request submitted successfully!');
             
-            // Clear the session storage
             sessionStorage.clear();
-            
-            // Redirect to dashboard
             window.location.href = 'step1.jsp';
         });
     </script>
