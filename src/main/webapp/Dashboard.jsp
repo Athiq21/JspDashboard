@@ -666,7 +666,7 @@
     <main>
         <h1>CANCELLATION</h1>
         
-        <!-- Progress Steps -->
+        <!-- The progress steps from jsp -->
         <div class="progress-steps">
             <div class="progress-step active" data-step="1">
                 <span>1</span>
@@ -686,12 +686,12 @@
             </div>
         </div>
         
-        <!-- Progress Bar -->
+        <!-- BARs -->
         <div class="progress-bar progress-0"></div>
 
         <div class="new-users">
             <div class="user-list">
-                <!-- Step Content Container -->
+                <!-- Step Cont -->
                 <div id="stepContent" class="form-container">
                     <!-- Content will be loaded here -->
                 </div>
@@ -709,7 +709,7 @@
             </div>
 
         </div>
-        <!-- End of Nav -->
+        <!-- End of Nav with the prosiles -->
 
 
         </div>
@@ -725,12 +725,9 @@
 
 
     function loadStep(stepNumber) {
-        // Update progress bar
         const progressBar = document.querySelector('.progress-bar');
         progressBar.classList.remove('progress-0', 'progress-25', 'progress-50', 'progress-75', 'progress-100');
         progressBar.classList.add(`progress-${(stepNumber - 1) * 25}`);
-        
-        // Update progress steps
         document.querySelectorAll('.progress-step').forEach(step => {
             if (parseInt(step.dataset.step) <= stepNumber) {
                 step.classList.add('active');
@@ -739,10 +736,8 @@
             }
         });
 
-        // Load the content from the corresponding JSP file
         const stepContent = document.getElementById('stepContent');
-        
-        // Create an iframe to load the JSP content
+   
         stepContent.innerHTML = `
             <iframe src="step${stepNumber}.jsp" 
                     style="width: 100%; border: none; height: 600px;" 
@@ -751,17 +746,14 @@
         `;
     }
 
-    // Function to automatically resize iframe based on content
     function resizeIframe(iframe) {
         iframe.style.height = iframe.contentWindow.document.documentElement.scrollHeight + 'px';
     }
 
-    // Load initial step when page loads
+    
     document.addEventListener('DOMContentLoaded', function() {
         loadStep(1);
     });
-
-    // Handle messages from iframes (for navigation between steps)
     window.addEventListener('message', function(event) {
         if (event.data.type === 'navigation') {
             loadStep(event.data.step);
